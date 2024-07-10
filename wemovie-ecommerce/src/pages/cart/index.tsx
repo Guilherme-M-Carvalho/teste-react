@@ -43,17 +43,17 @@ export function Cart() {
 
     return <CardProduct maxWidth padding>
         <Row mobile>
-            <Col>
+            <Col md4>
                 <SubTitle>
                     Produto
                 </SubTitle>
             </Col>
-            <Col>
+            <Col md4>
                 <SubTitle>
                     QTD
                 </SubTitle>
             </Col>
-            <Col>
+            <Col md4>
                 <SubTitle>
                     SUBTOTAL
                 </SubTitle>
@@ -62,37 +62,41 @@ export function Cart() {
         {products.map((product, index) => (
             product.inCart ?
                 <Row borderBottom paddingBottom>
-                    <Col auto alignItemsCenter>
-                        <Img src={product.image} mobile />
-                    </Col>
-                    <Col>
-                        <Row key={index} >
-                            <Col alignItemsCenter gap sm>
-                                <AreaTitle>
-                                    <TitleStyled size>
-                                        {product.title}
-                                    </TitleStyled>
-                                    <Price>
-                                        {handleFormat(product.price)}
-                                    </Price>
-                                </AreaTitle>
-                            </Col>
-                            <Col alignItemsCenter gap sm6>
-                                <IconAction src={minus} onClick={() => handleMinusProduct(index)} />
-                                <InputStyled value={product.amount} onBlur={() => product.amount < 1 && handleChangeAmount(index, 1)} onChange={({ target }) => handleChangeAmount(index, Number(target.value.replace(/[^\d.-]/g, '')))} />
-                                <IconAction src={plus} onClick={() => handleAddProduct(index)} />
-                            </Col>
-                            <Col alignItemsCenter justifyContentEndSm sm6>
+                    <Col auto sm12 alignItemsCenter md4>
+                        <Img sm src={product.image} mobile />
+                        <AreaTitle style={{ marginLeft: 4 }}>
+                            <div>
+                                <TitleStyled size>
+                                    {product.title}
+                                </TitleStyled>
+                                <Price>
+                                    {handleFormat(product.price)}
+                                </Price>
+                                <IconAction mdHide src={trash} onClick={() => handleRemove(index)} />
+                            </div>
+                            <div>
+                                <div>
+                                    <IconAction src={minus} onClick={() => handleMinusProduct(index)} />
+                                    <InputStyled value={product.amount} onBlur={() => product.amount < 1 && handleChangeAmount(index, 1)} onChange={({ target }) => handleChangeAmount(index, Number(target.value.replace(/[^\d.-]/g, '')))} />
+                                    <IconAction src={plus} onClick={() => handleAddProduct(index)} />
+                                </div>
                                 <Price subTotal>
                                     {handleFormat((product.price * product.amount))}
                                 </Price>
-                            </Col>
-                        </Row>
+                            </div>
+                        </AreaTitle>
                     </Col>
-                    <Col auto alignItemsCenter>
+                    <Col alignItemsCenter gap smHide md4>
+                        <IconAction src={minus} onClick={() => handleMinusProduct(index)} />
+                        <InputStyled value={product.amount} onBlur={() => product.amount < 1 && handleChangeAmount(index, 1)} onChange={({ target }) => handleChangeAmount(index, Number(target.value.replace(/[^\d.-]/g, '')))} />
+                        <IconAction src={plus} onClick={() => handleAddProduct(index)} />
+                    </Col>
+                    <Col alignItemsCenter smHide justifyContentEndSm sm6 md4>
+                        <Price subTotal>
+                            {handleFormat((product.price * product.amount))}
+                        </Price>
                         <IconAction mlAuto src={trash} onClick={() => handleRemove(index)} />
                     </Col>
-
                 </Row>
                 : null
         ))}

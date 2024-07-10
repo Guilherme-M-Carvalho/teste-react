@@ -9,6 +9,6 @@ import add from "../../assets/add.png"
 import minus from "../../assets/minus.png"
 import plus from "../../assets/plus.png"
 import trash from "../../assets/trash.png"
+import { AreaActions } from "./areaActions"
 
-
-export { CardProduct, Img, TitleStyled, Price, ButtonAdd, IconAdd, add, SubTitle, minus, plus, trash }
+export { CardProduct, Img, TitleStyled, Price, ButtonAdd, IconAdd, add, SubTitle, minus, plus, trash, AreaActions }

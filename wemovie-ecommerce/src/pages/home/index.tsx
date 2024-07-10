@@ -28,7 +28,7 @@ export function Home() {
                     <Price>
                         {handleFormat(product.price)}
                     </Price>
-                    <ButtonAdd green={!!product.amount} onClick={() => handleAddProduct(index)} >
+                    <ButtonAdd blueHover green={!!product.amount} onClick={() => handleAddProduct(index)} >
                         <IconAdd src={add} />
                         <span>
                             {product.amount}

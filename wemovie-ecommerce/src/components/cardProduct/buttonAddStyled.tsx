@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonAdd = styled.button<{green?: boolean; fitContent?: boolean; paddingInline?:boolean; maxWidth?: boolean }>`
+export const ButtonAdd = styled.button<{ blueHover?: boolean; green?: boolean; fitContent?: boolean; paddingInline?:boolean; maxWidth?: boolean }>`
     width: 100%;
     height: 40px;
     padding: 8px;
@@ -20,6 +20,11 @@ export const ButtonAdd = styled.button<{green?: boolean; fitContent?: boolean; p
     ${props => props.fitContent && `width: fit-content;`};
     ${props => props?.green && `background: ${props.theme.green}`};
     ${props => props?.paddingInline && `padding-inline: 32px`};
+    ${props => props?.blueHover && !props.green ? `
+        &:hover {
+            background: ${props.theme.blueHover};
+        }    
+    `: null};
 
     span {
         font-size: 12px;

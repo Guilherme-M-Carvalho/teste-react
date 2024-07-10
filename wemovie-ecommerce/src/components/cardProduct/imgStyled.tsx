@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Img = styled.img<{ mobile?: boolean }>`
+export const Img = styled.img<{ sm?: boolean; mobile?: boolean }>`
     width: 147px;
     height: 188px;
 
@@ -10,6 +10,12 @@ export const Img = styled.img<{ mobile?: boolean }>`
             width: 44px;
             height: 62px;
             margin-right: 4px;
+        }
+    `}
+    ${props => props.sm && `
+        @media (max-width: 768px) {
+            width: 80px;
+            height: 106px;
         }
     `}
 `
